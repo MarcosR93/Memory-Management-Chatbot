@@ -32,7 +32,7 @@ public:
 
     // getter / setter
     // TODO: Change return pointer so that it works
-    unique_ptr<ChatLogic> GetChatLogicHandle() { return _chatLogic; }
+    unique_ptr<ChatLogic> GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);
