@@ -19,7 +19,7 @@ private:
     //// STUDENT CODE
     ////
 
-    std::unique_ptr<ChatLogic> _chatLogic;
+    std::unique_ptr<ChatLogic> _chatLogic;  // Turned raw pointer into unique_ptr
 
     ////
     //// EOF STUDENT CODE
@@ -27,12 +27,12 @@ private:
 public:
     // constructor / destructor
     ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
-    ChatBotPanelDialog() : _chatLogic(std::make_unique<ChatLogic>()){}
+    //ChatBotPanelDialog() : _chatLogic(std::make_unique<ChatLogic>()){}
     ~ChatBotPanelDialog();
 
     // getter / setter
-    // TODO: Change return pointer so that it works
-    unique_ptr<ChatLogic> GetChatLogicHandle() { return _chatLogic.get(); }
+    // Added .get() to return the unique pointer
+    ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events
     void paintEvent(wxPaintEvent &evt);

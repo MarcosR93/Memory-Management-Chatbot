@@ -11,11 +11,9 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    // Commented out since it causes a crash and is 
-    // already taken care of inside chatbot.cpp destructor
-    /*
-     * delete _chatBot;
-     */ 
+    
+      //delete _chatBot;
+     
 
     ////
     //// EOF STUDENT CODE
