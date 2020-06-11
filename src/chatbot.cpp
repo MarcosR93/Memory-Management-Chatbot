@@ -35,15 +35,75 @@ ChatBot::~ChatBot()
     std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
-    //if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-   // {
+    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    {
         delete _image;
-        //_image = NULL;
-    //}
+        _image = NULL;
+    }
 }
 
 //// STUDENT CODE
 ////
+
+// Copy constructor
+ChatBot::ChatBot(const ChatBot &source)
+{
+    std::cout << "copy chatbot" << std::endl;
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+}
+
+// Move constructor
+ChatBot::ChatBot(ChatBot &&source)
+{
+    std::cout << "moving chatbot" << std::endl;
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = NULL;
+}
+
+// Copy assignment constructor
+ChatBot &ChatBot::operator=(const ChatBot &source) 
+{
+    std::cout << "copy assignment chatbot" << std::endl;
+    if (this == &source)
+    {
+        return *this;
+    }
+    if (_image != NULL)
+    {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    return *this;
+}
+
+// Move assignment constructor
+ChatBot &ChatBot::operator=(ChatBot &&source)
+{
+    std::cout << "Move assignment chatbot" << std::endl;
+    if (this == &source)
+    {
+        return *this;
+    }
+    if (_image != NULL)
+    {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._rootNode;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = NULL;
+    return *this;
+}
 
 ////
 //// EOF STUDENT CODE
